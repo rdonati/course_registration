@@ -1,8 +1,9 @@
 import time
+import platform
 from pynput.keyboard import Key, Controller
 from tkinter import *
 
-num_of_courses = 6
+num_of_courses = 5
 
 def print_data():
 
@@ -21,10 +22,17 @@ def submit():
 
 	keyboard = Controller()
 
-	keyboard.press(Key.cmd)
-	keyboard.press(Key.tab)
-	keyboard.release(Key.cmd)
-	keyboard.release(Key.tab)
+	#Checks OS to make sure correct keys are pressed to navigate between screens
+	if(platform.system() == "Darwin"):
+		keyboard.press(Key.cmd)
+		keyboard.press(Key.tab)
+		keyboard.release(Key.cmd)
+		keyboard.release(Key.tab)
+	else:
+		keyboard.press(Key.ctrl)
+		keyboard.press(Key.tab)
+		keyboard.release(Key.ctrl)
+		keyboard.release(Key.tab)
 
 	time.sleep(1.5)
 
@@ -42,7 +50,7 @@ w.resizable(height = False, width = False)
 #Creates labels
 labels = []
 for i in range(num_of_courses):
-	labels.append(Label(w, text = "{}. ".format(i + 1)))
+	labels.append(Label(w, text = "CRN {}: ".format(i + 1)))
 
 #Creates input
 entries = []
@@ -58,7 +66,6 @@ for i, label in enumerate(labels):
 #Shows input
 for i, entry in enumerate(entries):
 	entry.grid(row = i, column = 1)
-	entry.insert(0, "CRN {}".format(i + 1))
 	entry.bind("<FocusIn>", select_all)
 
 submit.grid(row = num_of_courses, column = 0)
