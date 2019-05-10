@@ -1,10 +1,5 @@
 # course_registration
 
-
-
-****************** ONLY WORKS FOR MAC *****************
-
-
 DESCRIPTION:
 
 A quick python program that I made, which uses automated keyboard events to speed up class registration.
