@@ -29,9 +29,9 @@ def submit():
 		keyboard.release(Key.cmd)
 		keyboard.release(Key.tab)
 	else:
-		keyboard.press(Key.ctrl)
+		keyboard.press(Key.alt)
 		keyboard.press(Key.tab)
-		keyboard.release(Key.ctrl)
+		keyboard.release(Key.alt)
 		keyboard.release(Key.tab)
 
 	time.sleep(1.5)
